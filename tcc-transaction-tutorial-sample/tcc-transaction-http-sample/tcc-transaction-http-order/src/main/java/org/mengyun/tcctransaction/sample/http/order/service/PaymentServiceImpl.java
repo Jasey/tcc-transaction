@@ -49,7 +49,7 @@ public class PaymentServiceImpl {
         String result2 = tradeOrderServiceProxy.record(null, buildRedPacketTradeOrderDto(order));
     }
 
-    public void confirmMakePayment(Order order, BigDecimal redPacketPayAmount, BigDecimal capitalPayAmount) {
+    public void confirmMakePayment(String orderNo, Order order, BigDecimal redPacketPayAmount, BigDecimal capitalPayAmount) {
 
 
         try {
@@ -69,7 +69,7 @@ public class PaymentServiceImpl {
         }
     }
 
-    public void cancelMakePayment(Order order, BigDecimal redPacketPayAmount, BigDecimal capitalPayAmount) {
+    public void cancelMakePayment(String orderNo, Order order, BigDecimal redPacketPayAmount, BigDecimal capitalPayAmount) {
 
 
         try {

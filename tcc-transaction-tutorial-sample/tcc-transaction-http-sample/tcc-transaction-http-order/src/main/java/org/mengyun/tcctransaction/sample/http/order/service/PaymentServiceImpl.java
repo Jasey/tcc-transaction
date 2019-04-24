@@ -2,6 +2,7 @@ package org.mengyun.tcctransaction.sample.http.order.service;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.mengyun.tcctransaction.api.Compensable;
+import org.mengyun.tcctransaction.api.UniqueIdentity;
 import org.mengyun.tcctransaction.sample.http.capital.api.dto.CapitalTradeOrderDto;
 import org.mengyun.tcctransaction.sample.http.redpacket.api.dto.RedPacketTradeOrderDto;
 import org.mengyun.tcctransaction.sample.order.domain.entity.Order;
@@ -29,7 +30,7 @@ public class PaymentServiceImpl {
 
     @Compensable(confirmMethod = "confirmMakePayment", cancelMethod = "cancelMakePayment", asyncConfirm = true)
     @Transactional
-    public void makePayment(Order order, BigDecimal redPacketPayAmount, BigDecimal capitalPayAmount) {
+    public void makePayment(@UniqueIdentity String orderNo, Order order, BigDecimal redPacketPayAmount, BigDecimal capitalPayAmount) {
 
         System.out.println("order try make payment called.time seq:" + DateFormatUtils.format(Calendar.getInstance(), "yyyy-MM-dd HH:mm:ss"));
 
